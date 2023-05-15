@@ -50,11 +50,11 @@ USE_SYS_TMP=true
 ### TL;DR
 
 ```bash
-# install dependencies
-poetry install
-
 # create a new branch
 git checkout -b my-feature
+
+# install dependencies
+poetry install
 
 # run app
 poetry run app
@@ -62,8 +62,10 @@ poetry run app
 # run checks
 poetry run nox
 
-# commit changes
+# stage changes
 git add .
+
+# commit with conventional commit style
 git commit -m "tag: short description"
 ```
 
