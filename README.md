@@ -50,9 +50,7 @@ USE_SYS_TMP=true
 ### TL;DR
 
 ```bash
-# clone and make changes
-git clone https://github.com/pls-zip/pls.zip.git
-cd pls.zip
+# install dependencies
 poetry install
 
 # create a new branch
@@ -67,9 +65,6 @@ poetry run nox
 # commit changes
 git add .
 git commit -m "tag: short description"
-
-# push changes
-git push origin my-feature
 ```
 
 ### Coding Standards
