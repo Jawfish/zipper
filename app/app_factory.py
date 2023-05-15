@@ -56,7 +56,7 @@ class App(FastAPI):
         state (AppState): The application state for the application.
     """
 
-    def __init__(self, state: AppState = None) -> None:
+    def __init__(self, state: AppState) -> None:
         """Initializes a new App instance with the given state.
 
         Args:
