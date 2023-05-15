@@ -47,11 +47,30 @@ USE_SYS_TMP=true
 
 ## Contributing
 
-1. Fork the repository and clone it to your local machine
-2. Navigate to your local copy of the repository
-3. Run `poetry install` to set up the environment
-4. Create a new branch for your changes `git checkout -b your-branch-name`
-5. Make your changes
+### TL;DR
+
+```bash
+# clone and make changes
+git clone https://github.com/pls-zip/pls.zip.git
+cd pls.zip
+poetry install
+
+# create a new branch
+git checkout -b my-feature
+
+# run app
+poetry run app
+
+# run checks
+poetry run nox
+
+# commit changes
+git add .
+git commit -m "tag: short description"
+
+# push changes
+git push origin my-feature
+```
 
 ### Coding Standards
 
