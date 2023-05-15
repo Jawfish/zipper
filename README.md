@@ -47,8 +47,6 @@ USE_SYS_TMP=true
 
 ## Contributing
 
-To contribute to follow these steps:
-
 1. Fork the repository and clone it to your local machine
 2. Navigate to your local copy of the repository
 3. Run `poetry install` to set up the environment
