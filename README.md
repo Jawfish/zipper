@@ -1,6 +1,6 @@
 # pls.zip
 
-[pls.zip](https://pls.zip) is a webapp where users can upload files to receive downloadable an archive of them. The application is developed using the Python FastAPI framework.
+[pls.zip](https://pls.zip) is a webapp where users can upload files to receive a downloadable archive of them. The application is developed using the Python FastAPI framework.
 
 ## Getting Started
 
