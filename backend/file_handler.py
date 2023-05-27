@@ -7,7 +7,7 @@ from pathlib import Path
 
 import aiofiles
 
-from app.settings import Settings
+from backend.settings import Settings
 
 
 class FileHandler:

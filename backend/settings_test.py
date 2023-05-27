@@ -1,5 +1,5 @@
 import os
-from app.settings import Settings
+from backend.settings import Settings
 
 
 def test_settings_loaded_from_env():

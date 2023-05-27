@@ -9,9 +9,10 @@ regardless of the router they are defined in.
 from logging import Logger
 
 from fastapi import APIRouter, FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from starlette.datastructures import State
 
-from app.file_handler import FileHandler
+from backend.file_handler import FileHandler
 
 
 class AppState(State):
@@ -20,8 +21,8 @@ class AppState(State):
     AppState inherits from the starlette.datastructures.State class, which provides a
     mapping for storing arbitrary attributes. AppState is used to inject the file
     handler and logger into the application. These can be accessed by the endpoints via
-    the app state (app.state.file_handler and app.state.logger), regardless of which
-    router the endpoint is defined in.
+    the app state (backend.state.file_handler and backend.state.logger), regardless of
+    which router the endpoint is defined in.
 
     Attributes:
         file_handler (FileHandler): The file handler to use for the application.
@@ -32,8 +33,9 @@ class AppState(State):
         """Initializes a new instance of AppState.
 
         AppState is used to inject the database and logger into the application so that
-        they can be accessed by the endpoints via the app state (app.state.database and
-        app.state.logger), regardless of which router the endpoint is defined in.5
+        they can be accessed by the endpoints via the app state (backend.state.database
+        and backend.state.logger), regardless of which router the endpoint is defined
+        in.
 
 
         Args:
@@ -84,6 +86,17 @@ def create_app(
     state = AppState(file_handler, logger)
     app = App(state=state)
 
+    origins = [
+        "http://localhost:5173",
+    ]
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
     state.logger.info("Application created")
 
     # Include the routers in the application. This is done to ensure that the

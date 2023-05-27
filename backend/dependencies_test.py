@@ -2,9 +2,9 @@ import pytest
 from unittest.mock import MagicMock, patch
 
 from fastapi import Request
-from app.dependencies import get_file_handler, get_logger
-from app.file_handler import FileHandler
-from app.app_factory import AppState
+from backend.dependencies import get_file_handler, get_logger
+from backend.file_handler import FileHandler
+from backend.app_factory import AppState
 from logging import Logger
 
 

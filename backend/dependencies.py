@@ -16,10 +16,10 @@ from typing import TYPE_CHECKING
 
 from fastapi import Request
 
-from app.file_handler import FileHandler
+from backend.file_handler import FileHandler
 
 if TYPE_CHECKING:
-    from app.app_factory import AppState
+    from backend.app_factory import AppState
 
 
 def get_logger(request: Request) -> Logger:

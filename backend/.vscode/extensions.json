@@ -1,9 +1,0 @@
-{
-    "recommendations": [
-        "njpwerner.autodocstring",
-        "ms-python.black-formatter",
-        "usernamehw.errorlens",
-        "ms-python.vscode-pylance",
-        "charliermarsh.ruff"
-    ]
-}

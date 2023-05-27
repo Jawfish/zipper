@@ -4,7 +4,7 @@ import pytest
 from unittest.mock import Mock
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from app.file_handler import FileHandler
+from backend.file_handler import FileHandler
 
 
 class MockSettings:

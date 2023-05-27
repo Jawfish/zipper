@@ -1,11 +1,11 @@
 """Entrypoint for the application."""
 import uvicorn
 
-from app.app_factory import create_app
-from app.endpoints import router
-from app.file_handler import FileHandler
-from app.logger import set_up_logger
-from app.settings import Settings
+from backend.app_factory import create_app
+from backend.endpoints import router
+from backend.file_handler import FileHandler
+from backend.logger import set_up_logger
+from backend.settings import Settings
 
 
 def main() -> None:

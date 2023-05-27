@@ -4,13 +4,13 @@ import nox
 
 @nox.session(python=["3.11"])
 def precommit(session):
-    session.run("pre-commit", "run", "--all-files", external=True)
+    session.run("pre-commit", "run", "--files", "backend/", external=True)
 
 
 @nox.session(python=["3.11"])
 def lint(session) -> None:
-    session.run("poetry", "run", "black", "app", external=True)
-    session.run("poetry", "run", "ruff", "--fix", "app", external=True)
+    session.run("poetry", "run", "black", "backend", external=True)
+    session.run("poetry", "run", "ruff", "--fix", "backend", external=True)
 
 
 @nox.session(python=["3.11"])
@@ -20,4 +20,4 @@ def test(session) -> None:
 
 @nox.session(python=["3.11"])
 def types(session) -> None:
-    session.run("poetry", "run", "mypy", "app", external=True)
+    session.run("poetry", "run", "mypy", "backend", external=True)

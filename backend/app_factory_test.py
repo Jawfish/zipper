@@ -2,8 +2,8 @@ import pytest
 from unittest.mock import MagicMock, patch
 
 from fastapi import APIRouter
-from app.app_factory import create_app, AppState
-from app.file_handler import FileHandler
+from backend.app_factory import create_app, AppState
+from backend.file_handler import FileHandler
 from logging import Logger
 
 
