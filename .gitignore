@@ -364,3 +364,5 @@ dist
 /yarn.lock
 
 .pnpm-store
+
+.vite

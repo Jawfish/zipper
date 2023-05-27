@@ -46,8 +46,8 @@
   "scripts": {
     "build": "tsc && yarn fix && vite build",
     "dev": "vite",
-    "lint": "eslint --ext .ts,.tsx src",
-    "lint:fix": "eslint --ext .ts,.tsx src --fix",
+    "lint": "eslint --ext .ts,.tsx frontend",
+    "lint:fix": "eslint --ext .ts,.tsx frontend --fix",
     "preview": "vite preview",
     "test": "vitest -r tests",
     "test:ui": "vitest --ui --open"
