@@ -9,6 +9,7 @@ repos:
         args: [--fix=lf]
       - id: name-tests-test
       - id: end-of-file-fixer
+        files: ^backend/.*$
       - id: check-case-conflict
       - id: check-toml
       - id: no-commit-to-branch

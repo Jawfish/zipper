@@ -4,6 +4,11 @@
     "name": "James Fitzgerald"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@mantine/core": "^6.0.11",
+    "@mantine/dropzone": "^6.0.11",
+    "@mantine/hooks": "^6.0.11",
+    "@tabler/icons-react": "^2.20.0",
     "clsx": "^1.2.1",
     "eslint-plugin-unused-imports": "^2.0.0",
     "react": "^18.2.0",

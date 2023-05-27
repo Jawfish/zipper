@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-typescript-next",
+    "njpwerner.autodocstring",
+    "ms-python.black-formatter",
+    "usernamehw.errorlens",
+    "ms-python.vscode-pylance",
+    "charliermarsh.ruff"
+  ]
+}
