@@ -27,7 +27,7 @@
 3. Start the application
 
     ```bash
-    poetry run app
+    poetry run backend
     ```
 
 ## Configuration
@@ -57,7 +57,7 @@ git checkout -b my-feature
 poetry install
 
 # run app
-poetry run app
+poetry run backend
 
 # run checks
 poetry run nox
