@@ -15,7 +15,7 @@ def main() -> None:
     logger = set_up_logger()
 
     file_handler = FileHandler(settings, logger)
-    server = create_app(file_handler, [router], logger)
+    server = create_app(file_handler, [router], logger, settings)
     uvicorn.run(server, host="localhost", port=8000)
 
 

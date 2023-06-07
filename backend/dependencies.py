@@ -17,6 +17,7 @@ from typing import TYPE_CHECKING
 from fastapi import Request
 
 from backend.file_handler import FileHandler
+from backend.settings import Settings
 
 if TYPE_CHECKING:
     from backend.app_factory import AppState
@@ -56,3 +57,20 @@ def get_file_handler(request: Request) -> FileHandler:
     """
     app_state: AppState = request.app.state
     return app_state.file_handler
+
+
+def get_settings(request: Request) -> Settings:
+    """Provides endpoints access to the given application's settings.
+
+    Args:
+        request: The request object for the endpoint.
+
+    Returns:
+        The settings for the application.
+    Usage:
+        @router.get("/test")
+        async def test(settings: Settings = Depends(get_settings)) -> dict:
+           ...
+    """
+    app_state: AppState = request.app.state
+    return app_state.settings

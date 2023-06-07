@@ -7,6 +7,7 @@ def test_settings_loaded_from_env():
     os.environ["FILE_DIRECTORY"] = "/test/file/directory"
     os.environ["ZIP_DIRECTORY"] = "/test/zip/directory"
     os.environ["USE_SYS_TMP"] = "True"
+    os.environ["MAX_FILE_SIZE"] = "5242880"
 
     # Load settings
     settings = Settings()
@@ -15,3 +16,4 @@ def test_settings_loaded_from_env():
     assert settings.file_directory == "/test/file/directory"
     assert settings.zip_directory == "/test/zip/directory"
     assert settings.use_sys_tmp is True
+    assert settings.max_file_size == 5242880

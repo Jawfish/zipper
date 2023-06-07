@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     file_directory: str = "files"
     zip_directory: str = "zipped_files"
     use_sys_tmp: bool = False
+    max_file_size: int = 5242880
 
     class Config:  # noqa: D106
         env_file = ".env"

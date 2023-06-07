@@ -13,6 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.datastructures import State
 
 from backend.file_handler import FileHandler
+from backend.settings import Settings
 
 
 class AppState(State):
@@ -27,9 +28,15 @@ class AppState(State):
     Attributes:
         file_handler (FileHandler): The file handler to use for the application.
         logger (Logger): The logger to use for the application.
+        settings (Settings): The settings to use for the application.
     """
 
-    def __init__(self, file_handler: FileHandler, logger: Logger) -> None:
+    def __init__(
+        self,
+        file_handler: FileHandler,
+        logger: Logger,
+        settings: Settings,
+    ) -> None:
         """Initializes a new instance of AppState.
 
         AppState is used to inject the database and logger into the application so that
@@ -41,10 +48,12 @@ class AppState(State):
         Args:
             file_handler: The file handler to use for the application.
             logger: The logger to use for the application.
+            settings: The settings to use for the application.
         """
         super().__init__()
         self.file_handler = file_handler
         self.logger = logger
+        self.settings = settings
 
 
 class App(FastAPI):
@@ -72,6 +81,7 @@ def create_app(
     file_handler: FileHandler,
     routers: list[APIRouter],
     logger: Logger,
+    settings: Settings,
 ) -> App:
     """Factory function for creating the FastAPI application.
 
@@ -79,11 +89,12 @@ def create_app(
         file_handler: The file handler to use for the application.
         routers: The routers to include in the application.
         logger: The logger to use for the application.
+        settings: The settings to use for the application.
 
     Returns:
         The FastAPI application.
     """
-    state = AppState(file_handler, logger)
+    state = AppState(file_handler, logger, settings)
     app = App(state=state)
 
     origins = [
