@@ -1,4 +1,5 @@
 """Endpoints for the API."""
+import uuid
 from logging import Logger
 from zipfile import ZipFile
 
@@ -35,6 +36,7 @@ async def zip_files(
     """
     files = files or []
     total_size = 0
+    zip_name = uuid.uuid4().hex + ".zip"
 
     logger.info("Received %d files", len(files))
 
@@ -42,7 +44,7 @@ async def zip_files(
 
     zip_dir.mkdir(parents=True, exist_ok=True)
 
-    zip_location = zip_dir / "files.zip"  # TODO: UUID for filename
+    zip_location = zip_dir / zip_name
 
     with ZipFile(zip_location, "w") as zip_file:
         for file in files:
@@ -65,7 +67,7 @@ async def zip_files(
     response_file = FileResponse(
         str(zip_location),
         media_type="application/zip",
-        filename="files.zip",  # TODO: don't hardcode filename
+        filename=zip_name,
     )
 
     logger.info("Returning file %s", response_file.filename)
