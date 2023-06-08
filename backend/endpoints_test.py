@@ -1,3 +1,4 @@
+import os
 from dotenv import load_dotenv
 import pytest
 from fastapi.testclient import TestClient
@@ -90,8 +91,13 @@ async def test_zip_files_with_unsafe_filenames():
     with open("test.zip", "wb") as file:
         file.write(response.content)
 
-    with ZipFile("test.zip", "r") as zip_file:
-        file_list = zip_file.namelist()
+    try:
+        with ZipFile("test.zip", "r") as zip_file:
+            file_list = zip_file.namelist()
 
-    assert "../unsafe.txt" not in file_list, "Unsafe filename was not sanitized"
-    assert "unsafe.txt" in file_list, "Sanitized filename not found in the zip file"
+        assert "../unsafe.txt" not in file_list, "Unsafe filename was not sanitized"
+        assert "unsafe.txt" in file_list, "Sanitized filename not found in the zip file"
+
+    finally:
+        if os.path.exists("test.zip"):
+            os.remove("test.zip")

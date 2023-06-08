@@ -366,3 +366,5 @@ dist
 .pnpm-store
 
 .vite
+
+test.zip
