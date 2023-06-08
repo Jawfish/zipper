@@ -9,6 +9,7 @@ from fastapi.responses import FileResponse
 from backend.dependencies import get_file_handler, get_logger, get_settings
 from backend.file_handler import FileHandler
 from backend.settings import Settings
+from backend.utils import sanitize_filename
 
 router = APIRouter()
 
@@ -58,8 +59,10 @@ async def zip_files(
                         detail="Total file size too large",
                     )
 
-                logger.info("Received file %s", file.filename)
-                zip_file.writestr(file.filename, content)
+                sanitized_filename = sanitize_filename(file.filename)
+
+                logger.info("Received file %s", sanitized_filename)
+                zip_file.writestr(sanitized_filename, content)
 
     if not zip_file.namelist():
         raise HTTPException(status_code=400, detail="No files found")
