@@ -1,6 +1,6 @@
-# pls.zip
+# Zipper
 
-[pls.zip](https://pls.zip) is a webapp where users can upload files to receive a downloadable archive of them. The application is developed using the Python FastAPI framework.
+Zipper is a webapp where users can upload files to receive a downloadable archive of them. The application is developed using the Python FastAPI framework.
 
 ## Getting Started
 
@@ -38,12 +38,13 @@ Application settings are loaded from environment variables which are set in a `.
 FILE_DIRECTORY=./files
 ZIP_DIRECTORY=./zipped_files
 USE_SYS_TMP=true
-
+MAX_FILE_SIZE=5242880 # 5MB
 ```
 
 - `FILE_DIRECTORY`: The directory where uploaded files are temporarily stored.
 - `ZIP_DIRECTORY`: The directory where zipped files are stored.
 - `USE_SYS_TMP`: Whether or not to use the system's temporary directory for file storage.
+- `MAX_FILE_SIZE`: The maximum allowed file size for uploads in bytes.
 
 ## Contributing
 
@@ -67,71 +68,6 @@ git add .
 
 # commit with conventional commit style
 git commit -m "tag: short description"
-```
-
-### Coding Standards
-
-The project adheres to a set of coding standards to ensure code quality and consistency. We use a variety of tools to enforce these standards:
-
-- Code is formatted with `black`
-- Static type checking is performed with `mypy`
-- Code is linted with `ruff`
-
-Before you commit your changes, please ensure your code adheres to these standards. For your convenience, all of the necessary checks, including tests, are included in the `noxfile.py` file. To run all of the checks, simply run:
-
-```bash
-poetry run nox
-```
-
-### Testing
-
-We use `pytest` for our testing framework. To ensure your changes do not break existing functionality, please write tests for any new features or changes and ensure all tests pass before submitting your changes.
-
-To run the tests:
-
-```bash
-poetry run pytest
-```
-
-Or, you can use `nox` to run the tests along with the other checks:
-
-```bash
-poetry run nox
-```
-
-### Committing Your Changes
-
-We follow a conventional commit style, so your commit message should look like this:
-
-```markdown
-feat: add new feature
-fix: fix a bug
-test: add tests
-docs: update documentation
-chore: make a chore change
-build: make a build change
-refactor: make a refactor change
-```
-
-They should look something like this:
-
-```bash
-git add .
-git commit -m "tag: short description"
-```
-
-#### Pre-Commit Hooks
-
-We use pre-commit hooks to ensure code quality and run some checks before each commit. The hooks enforce the conventional commit style. These are run when you run `nox`, but if you'd like to run them on their own, you can do so with:
-
-```bash
-poetry run pre-commit run --all-files
-```
-
-You can also have them run automatically on commit by installing the pre-commit hooks:
-
-```bash
-poetry run pre-commit install
 ```
 
 ## License
