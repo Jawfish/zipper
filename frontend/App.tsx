@@ -71,7 +71,7 @@ export default function App(props: Partial<DropzoneProps>) {
         withGlobalStyles
         withNormalizeCSS
         theme={{ colorScheme }}>
-        <Flex align={'center'} justify={'center'} style={{ height: '100vh' }}>
+        <Flex align={'center'} justify={'center'} style={{ height: '100vh' }} mx={30}>
           <Center mx="auto">
             <Dropzone
               onDrop={files => handleDrop(files)}
@@ -82,10 +82,10 @@ export default function App(props: Partial<DropzoneProps>) {
               <Group
                 position="center"
                 spacing="xl"
+                py={60}
+                px={20}
                 style={{
-                  minHeight: rem(400),
                   pointerEvents: 'none',
-                  minWidth: rem(600)
                 }}>
                 <Dropzone.Accept>
                   <IconUpload
@@ -111,12 +111,14 @@ export default function App(props: Partial<DropzoneProps>) {
                   <IconUpload size="3.2rem" stroke={1.5} />
                 </Dropzone.Idle>
                 <div>
-                  <Text size="xl" inline>
+                  <Text size="lg" inline>
                     Drag files here or tap to select files
                   </Text>
                   <Text size="sm" color="dimmed" inline mt={7}>
-                    Attach as many files as you like. Each file should not
-                    exceed 5 MB.
+                    Attach as many files as you like.
+                  </Text>
+                  <Text size="sm" color="dimmed" inline mt={7}>
+                    Filesize should not exceed 5 MB.
                   </Text>
                 </div>
               </Group>
