@@ -3,11 +3,6 @@ import nox
 
 
 @nox.session(python=["3.11"])
-def precommit(session):
-    session.run("pre-commit", "run", "--files", "backend/", external=True)
-
-
-@nox.session(python=["3.11"])
 def lint(session) -> None:
     session.run("poetry", "run", "black", "backend", external=True)
     session.run("poetry", "run", "ruff", "--fix", "backend", external=True)
