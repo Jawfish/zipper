@@ -33,7 +33,8 @@ export default function App(props: Partial<DropzoneProps>) {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/zip', {
+      // TODO: make this not hardcoded
+      const response = await fetch('https://zipper.kaps.dev/zip', {
         method: 'POST',
         body: formData
       });
