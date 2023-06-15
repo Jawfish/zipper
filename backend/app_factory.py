@@ -108,6 +108,7 @@ def create_app(
         allow_methods=["*"],
         allow_headers=["*"],
     )
+
     state.logger.info("Application created")
 
     # Include the routers in the application. This is done to ensure that the

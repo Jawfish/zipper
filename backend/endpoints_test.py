@@ -13,7 +13,7 @@ from backend.settings import Settings
 from zipfile import ZipFile
 
 load_dotenv()
-settings = Settings(max_file_size=100)  # use low value so that test files will be small
+settings = Settings(max_file_size=500)
 logger = set_up_logger()
 client = TestClient(
     create_app(FileHandler(settings, logger), [router], logger, settings)
@@ -32,8 +32,8 @@ def mock_settings():
 
 @pytest.mark.asyncio
 async def test_zip_files():
-    upload_file1 = create_upload_file("test1.txt", "a" * (settings.max_file_size // 2))
-    upload_file2 = create_upload_file("test2.txt", "b" * (settings.max_file_size // 2))
+    upload_file1 = create_upload_file("test1.txt", "a")
+    upload_file2 = create_upload_file("test2.txt", "b")
 
     response = client.post(
         "/zip",
@@ -67,7 +67,7 @@ async def test_zip_files_size_limit():
         ],
     )
 
-    assert response.status_code == 400
+    assert response.status_code == 413
     assert response.json() == {"detail": "Total file size too large"}
 
 

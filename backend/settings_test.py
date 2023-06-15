@@ -8,6 +8,9 @@ def test_settings_loaded_from_env():
     os.environ["ZIP_DIRECTORY"] = "/test/zip/directory"
     os.environ["USE_SYS_TMP"] = "True"
     os.environ["MAX_FILE_SIZE"] = "5242880"
+    os.environ["CORS_ORIGINS"] = "http://localhost:3000, https://example.com"
+    os.environ["PORT"] = "8000"
+    os.environ["HOST"] = "localhost"
 
     # Load settings
     settings = Settings()

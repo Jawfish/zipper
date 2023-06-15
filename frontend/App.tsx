@@ -2,7 +2,6 @@ import {
   Group,
   Text,
   useMantineTheme,
-  rem,
   Center,
   Flex,
   MantineProvider,
@@ -22,7 +21,7 @@ export default function App(props: Partial<DropzoneProps>) {
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
   const [loading, setLoading] = useState(false);
-
+  const maxFileSize = import.meta.env.VITE_MAX_FILE_SIZE || 5 * 1024 * 1024;
   const handleDrop = async (files: File[]) => {
     setLoading(true);
 
@@ -33,11 +32,13 @@ export default function App(props: Partial<DropzoneProps>) {
     }
 
     try {
-      // TODO: make this not hardcoded
-      const response = await fetch('https://zipper.kaps.dev/zip', {
-        method: 'POST',
-        body: formData
-      });
+      const response = await fetch(
+        import.meta.env.VITE_API_URL || 'http://localhost:8000',
+        {
+          method: 'POST',
+          body: formData
+        }
+      );
 
       const blob = await response.blob();
 
@@ -71,12 +72,16 @@ export default function App(props: Partial<DropzoneProps>) {
         withGlobalStyles
         withNormalizeCSS
         theme={{ colorScheme }}>
-        <Flex align={'center'} justify={'center'} style={{ height: '100vh' }} mx={30}>
+        <Flex
+          align={'center'}
+          justify={'center'}
+          style={{ height: '100vh' }}
+          mx={30}>
           <Center mx="auto">
             <Dropzone
               onDrop={files => handleDrop(files)}
               onReject={files => console.log('rejected files', files)}
-              maxSize={5 * 1024 ** 2} // in bytes; 5 MB
+              maxSize={maxFileSize}
               loading={loading}
               {...props}>
               <Group
@@ -85,7 +90,7 @@ export default function App(props: Partial<DropzoneProps>) {
                 py={60}
                 px={20}
                 style={{
-                  pointerEvents: 'none',
+                  pointerEvents: 'none'
                 }}>
                 <Dropzone.Accept>
                   <IconUpload
@@ -118,7 +123,8 @@ export default function App(props: Partial<DropzoneProps>) {
                     Attach as many files as you like.
                   </Text>
                   <Text size="sm" color="dimmed" inline mt={7}>
-                    Filesize should not exceed 5 MB.
+                    Filesize should not exceed{' '}
+                    {Math.round(maxFileSize / 1024 / 1024)} MB.
                   </Text>
                 </div>
               </Group>

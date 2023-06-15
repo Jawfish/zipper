@@ -55,7 +55,7 @@ async def zip_files(
 
                 if total_size > settings.max_file_size:
                     raise HTTPException(
-                        status_code=400,
+                        status_code=413,
                         detail="Total file size too large",
                     )
 

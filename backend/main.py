@@ -8,12 +8,6 @@ from backend.file_handler import FileHandler
 from backend.logger import set_up_logger
 from backend.settings import Settings
 
-origins = [
-    "http://localhost:8000",
-    # TODO: don't hardcode this
-    "https://zipper.jawfish.dev",
-]
-
 
 def main() -> None:
     """Entrypoint for the application."""
@@ -25,12 +19,12 @@ def main() -> None:
     server = create_app(file_handler, [router], logger, settings)
     server.add_middleware(
         CORSMiddleware,
-        allow_origins=origins,
+        allow_origins=[settings.cors_origin],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    uvicorn.run(server, host="localhost", port=8000)
+    uvicorn.run(server, host=settings.host, port=settings.port)
 
 
 if __name__ == "__main__":
