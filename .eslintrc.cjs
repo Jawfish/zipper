@@ -53,6 +53,7 @@ module.exports = {
     }
   },
   rules: {
+    'react/prop-types': 'off',
     // handled by unused-imports plugin
     '@typescript-eslint/no-unused-vars': 'off',
     'unused-imports/no-unused-imports': 'warn',
