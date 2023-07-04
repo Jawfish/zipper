@@ -3,12 +3,14 @@ import { useColorScheme } from '@mantine/hooks';
 import {
   MantineProvider,
   ColorSchemeProvider,
-  ColorScheme
+  ColorScheme,
+  Flex
 } from '@mantine/core';
 
 import Header from './Header';
 import FileUploader from './FileUploader';
 import { handleDrop, handleReject } from './fileHandling';
+import Footer from './Footer';
 
 const App: React.FC = () => {
   const preferredColorScheme = useColorScheme();
@@ -28,13 +30,18 @@ const App: React.FC = () => {
         withGlobalStyles
         withNormalizeCSS
         theme={{ colorScheme }}>
-        <Header />
-        <FileUploader
-          handleDrop={handleDrop(setLoading)}
-          handleReject={handleReject(maxFileSize)}
-          maxFileSize={maxFileSize}
-          loading={loading}
-        />
+        <Flex
+          direction="column"
+          style={{ height: '100vh', justifyContent: 'space-between' }}>
+          <Header />
+          <FileUploader
+            handleDrop={handleDrop(setLoading)}
+            handleReject={handleReject(maxFileSize)}
+            maxFileSize={maxFileSize}
+            loading={loading}
+          />
+          <Footer />
+        </Flex>
       </MantineProvider>
     </ColorSchemeProvider>
   );

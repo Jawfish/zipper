@@ -20,11 +20,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   ...props
 }) => {
   return (
-    <Flex
-      align={'center'}
-      justify={'center'}
-      style={{ height: '100vh' }}
-      mx={30}>
+    <Flex align={'center'} justify={'center'} mx={30}>
       <Center mx="auto">
         <Dropzone
           onDrop={files => handleDrop(files)}

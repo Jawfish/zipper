@@ -1,4 +1,5 @@
 import { Group, Text, useMantineTheme } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import { IconUpload, IconX } from '@tabler/icons-react';
 import { Dropzone } from '@mantine/dropzone';
 
@@ -9,13 +10,17 @@ interface DropzoneContentProps {
 
 const DropzoneContent: React.FC<DropzoneContentProps> = ({ maxFileSize }) => {
   const theme = useMantineTheme();
+  const isDesktop = useMediaQuery('(min-width: 960px)');
+
+  const paddingY = isDesktop ? 100 : 60;
+  const paddingX = isDesktop ? 100 : 20;
 
   return (
     <Group
       position="center"
       spacing="xl"
-      py={60}
-      px={20}
+      py={paddingY}
+      px={paddingX}
       style={{
         pointerEvents: 'none'
       }}>
@@ -42,7 +47,7 @@ const DropzoneContent: React.FC<DropzoneContentProps> = ({ maxFileSize }) => {
       </Dropzone.Idle>
       <div>
         <Text size="lg" inline>
-          Drag files here or tap to select files
+          Select files to be zipped
         </Text>
         <Text size="sm" color="dimmed" inline mt={7}>
           Attach as many files as you like.
