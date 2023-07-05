@@ -14,8 +14,8 @@ Zipper is a webapp where users can upload files to receive a downloadable archiv
 1. Clone the repository
 
     ```bash
-    git clone https://github.com/your_username_/pls.zip.git
-    cd pls.zip
+    git clone https://github.com/Jawfish/zipper.git
+    cd zipper
     ```
 
 2. Install dependencies using Poetry
