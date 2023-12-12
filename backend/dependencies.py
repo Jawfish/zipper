@@ -1,6 +1,6 @@
 """Provides dependencies for endpoints.
 
-Dependencies are functions that are used to inject objects into endpoints. This is
+These are functions that are used to inject objects into endpoints. This is
 useful for providing access to objects that are used by multiple endpoints, like the
 logger and file handler.
 
